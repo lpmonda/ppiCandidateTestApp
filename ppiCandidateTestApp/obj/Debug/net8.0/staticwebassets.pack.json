@@ -1,0 +1,45 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\lmonda\\Documents\\GitHub\\ppiCandidateTestApp\\ppiCandidateTestApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\ppiCandidateTestApp.bundle.scp.css",
+      "PackagePath": "staticwebassets\\ppiCandidateTestApp.7pbcmi3exr.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\lmonda\\Documents\\GitHub\\ppiCandidateTestApp\\ppiCandidateTestApp\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "C:\\Users\\lmonda\\Documents\\GitHub\\ppiCandidateTestApp\\ppiCandidateTestApp\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\lmonda\\Documents\\GitHub\\ppiCandidateTestApp\\ppiCandidateTestApp\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\lmonda\\Documents\\GitHub\\ppiCandidateTestApp\\ppiCandidateTestApp\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.ppiCandidateTestApp.props",
+      "PackagePath": "build\\ppiCandidateTestApp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.ppiCandidateTestApp.props",
+      "PackagePath": "buildMultiTargeting\\ppiCandidateTestApp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.ppiCandidateTestApp.props",
+      "PackagePath": "buildTransitive\\ppiCandidateTestApp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.ppiCandidateTestApp.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.ppiCandidateTestApp.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

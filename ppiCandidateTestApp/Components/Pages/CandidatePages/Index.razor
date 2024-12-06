@@ -1,0 +1,92 @@
+﻿@page "/candidates"
+@using Microsoft.EntityFrameworkCore
+@using Microsoft.AspNetCore.Components.QuickGrid
+@using ppiCandidateTestApp.Models
+@using ppiCandidateTestApp.Data
+@implements IAsyncDisposable
+@inject IDbContextFactory<ppiCandidateTestApp.Data.ppiCandidateTestAppContext> DbFactory
+
+<PageTitle>Index</PageTitle>
+
+<h1>Candidate Information</h1>
+
+<div>
+    <form action="/candidates" data-enhance>
+        <p> Last Name</p> <input type="search" name="titleFilter"/>
+        <input type="submit" value="Search" />
+    </form>
+</div>
+
+<p>
+    <a href="candidates/create">Create New</a>
+</p>
+
+<QuickGrid Class="table" Items="FilteredCandidate">
+    <PropertyColumn Property="candidate => candidate.Firstname" Title="First Name" />
+    <PropertyColumn Property="candidate => candidate.Lastname"  Title="Last Name"/>
+    <PropertyColumn Property="candidate => candidate.Phone" Title="Phone Number"/>
+    <PropertyColumn Property="candidate => candidate.zipcode" Title="ZipCode"/>
+    <PropertyColumn Property="candidate => candidate.email" Title="Email Address"/>
+
+    <TemplateColumn Context="candidate">
+        <a href="@($"candidates/edit?id={candidate.Id}")">Edit</a> |
+        <a href="@($"candidates/details?id={candidate.Id}")">Details</a> |
+        <a href="@($"candidates/delete?id={candidate.Id}")">Delete</a>
+    </TemplateColumn>
+</QuickGrid>
+
+@code {
+    private ppiCandidateTestAppContext context = default!;
+
+    IQueryable<Candidate>? itemsQueryable;
+
+    [SupplyParameterFromQuery]
+    private string? TitleFilter { get; set; }
+
+    [SupplyParameterFromQuery]
+    private string? FirstNameFilter { get; set; }
+
+
+    private IQueryable<Candidate> FilteredCandidate =>
+       (context.Candidate.Where(  m => m.Lastname!.Contains(TitleFilter ?? string.Empty ))  
+       );
+
+    private IQueryable<Candidate> FilteredCandidate2 =>
+      (context.Candidate.Where(m => m.Firstname!.Contains(FirstNameFilter ?? string.Empty))
+      );
+
+  /*  private IQueryable<Candidate> FilteredCandidate
+    {
+        get
+        {
+            var result = itemsQueryable?.Where(c => c.Lastname != null);
+
+            /* if (!string.IsNullOrEmpty(TitleFilter))
+                 {
+                 result = result.Where(c => c.Lastname.Contains(TitleFilter, StringComparison.CurrentCultureIgnoreCase));
+             }
+             else if (!string.IsNullOrEmpty(TitleFilter))
+                 {
+                 result = result.Where(c => c.Firstname.Contains(TitleFilter, StringComparison.CurrentCultureIgnoreCase));
+             }
+
+            if (TitleFilter != string.Empty)
+            {
+                result = result.Where(c => c.Lastname.Contains(TitleFilter, StringComparison.CurrentCultureIgnoreCase));
+            }
+            else if (FirstNameFilter != string.Empty)
+            {
+                result = result.Where(c => c.Firstname.Contains(TitleFilter, StringComparison.CurrentCultureIgnoreCase));
+            }
+
+            return result;
+        }
+    }*/
+    
+    protected override void OnInitialized()
+    {
+        context = DbFactory.CreateDbContext();
+    }
+
+    public async ValueTask DisposeAsync() => await context.DisposeAsync();
+}

@@ -1,0 +1,54 @@
+﻿@page "/candidates/details"
+@using Microsoft.EntityFrameworkCore
+@using ppiCandidateTestApp.Models
+@inject IDbContextFactory<ppiCandidateTestApp.Data.ppiCandidateTestAppContext> DbFactory
+@inject NavigationManager NavigationManager
+
+<PageTitle>Details</PageTitle>
+
+<h1>Candidate Contact Details</h1>
+
+<div>
+    <!-- <h2>Candidate</h2> -->
+    <hr />
+    @if (candidate is null)
+    {
+        <p><em>Loading...</em></p>
+    }
+    else {
+        <dl class="row">
+            <dt class="col-sm-2">First Name</dt>
+            <dd class="col-sm-10">@candidate.Firstname</dd>
+            <dt class="col-sm-2">Last Name</dt>
+            <dd class="col-sm-10">@candidate.Lastname</dd>
+            <dt class="col-sm-2">Phone Number</dt>
+            <dd class="col-sm-10">@candidate.Phone</dd>
+            <dt class="col-sm-2">Zipcode</dt>
+            <dd class="col-sm-10">@candidate.zipcode</dd>
+            <dt class="col-sm-2">Email Address</dt>
+            <dd class="col-sm-10">@candidate.email</dd>
+        </dl>
+        <div>
+            <a href="@($"/candidates/edit?id={candidate.Id}")">Edit</a> |
+            <a href="@($"/candidates")">Back to List</a>
+        </div>
+    }
+</div>
+
+@code {
+    private Candidate? candidate;
+
+    [SupplyParameterFromQuery]
+    private int Id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        using var context = DbFactory.CreateDbContext();
+        candidate = await context.Candidate.FirstOrDefaultAsync(m => m.Id == Id);
+
+        if (candidate is null)
+        {
+            NavigationManager.NavigateTo("notfound");
+        }
+    }
+}
