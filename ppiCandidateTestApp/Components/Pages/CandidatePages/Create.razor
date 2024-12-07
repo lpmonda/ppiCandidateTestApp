@@ -1,4 +1,5 @@
 ﻿@page "/candidates/create"
+@attribute [Authorize]
 @using Microsoft.EntityFrameworkCore
 @using ppiCandidateTestApp.Models
 @inject IDbContextFactory<ppiCandidateTestApp.Data.ppiCandidateTestAppContext> DbFactory
@@ -17,27 +18,27 @@
             <ValidationSummary class="text-danger" role="alert"/>
             <div class="mb-3">
                 <label for="firstname" class="form-label">First Name:</label> 
-                <InputText id="firstname" @bind-Value="Candidate.Firstname" class="form-control" /> 
+                <InputText id="firstname" @bind-Value="Candidate.Firstname" class="form-control" placeholder="First Name"/> 
                 <ValidationMessage For="() => Candidate.Firstname" class="text-danger" /> 
             </div>        
             <div class="mb-3">
                 <label for="lastname" class="form-label">Last Name:</label> 
-                <InputText id="lastname" @bind-Value="Candidate.Lastname" class="form-control" /> 
+                <InputText id="lastname" @bind-Value="Candidate.Lastname" class="form-control" placeholder="Last Name" />
                 <ValidationMessage For="() => Candidate.Lastname" class="text-danger" /> 
             </div>        
             <div class="mb-3">
                 <label for="phone" class="form-label">Phone Number:</label> 
-                <InputText id="phone" @bind-Value="Candidate.Phone" class="form-control" /> 
+                <InputText id="phone" @bind-Value="Candidate.Phone" class="form-control" placeholder="999 999 9999" />
                 <ValidationMessage For="() => Candidate.Phone" class="text-danger" /> 
             </div>        
             <div class="mb-3">
                 <label for="zipcode" class="form-label">Zipcode:</label> 
-                <InputNumber id="zipcode" @bind-Value="Candidate.zipcode" class="form-control" /> 
+                <InputNumber id="zipcode" @bind-Value="Candidate.zipcode" class="form-control" placeholder="11111" />
                 <ValidationMessage For="() => Candidate.zipcode" class="text-danger" /> 
             </div>        
             <div class="mb-3">
                 <label for="email" class="form-label">Email Address:</label> 
-                <InputText id="email" @bind-Value="Candidate.email" class="form-control" /> 
+                <InputText id="email" @bind-Value="Candidate.email" class="form-control" placeholder="sample@gmail.com" />
                 <ValidationMessage For="() => Candidate.email" class="text-danger" /> 
             </div>        
             <button type="submit" class="btn btn-primary">Create</button>

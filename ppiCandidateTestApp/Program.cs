@@ -11,9 +11,24 @@ builder.Services.AddQuickGridEntityFrameworkAdapter();
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
+
+
 // Add services to the container.
+builder.Services.AddControllersWithViews();
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+// Add authentication options
+builder.Services.AddAuthentication("Auth")
+    .AddCookie("Auth", options =>
+    {
+        options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+        options.SlidingExpiration = true;
+        options.LoginPath = "/login";
+    });
+builder.Services.AddCascadingAuthenticationState();
+
+//
 
 var app = builder.Build();
 using (var scope = app.Services.CreateScope())
@@ -22,6 +37,8 @@ using (var scope = app.Services.CreateScope())
 
     SeedData.Initialize(services);
 }
+
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -32,6 +49,10 @@ if (!app.Environment.IsDevelopment())
     app.UseMigrationsEndPoint();
 }
 
+app.UseRouting();
+app.UseAuthentication();
+app.UseAuthorization();
+
 app.UseHttpsRedirection();
 
 app.UseStaticFiles();
@@ -39,5 +60,10 @@ app.UseAntiforgery();
 
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute("default", "{controller}/{action}");
+});
 
 app.Run();

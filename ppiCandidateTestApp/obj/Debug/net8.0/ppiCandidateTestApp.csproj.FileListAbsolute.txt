@@ -269,3 +269,4 @@ C:\Users\lmonda\Documents\GitHub\ppiCandidateTestApp\ppiCandidateTestApp\obj\Deb
 C:\Users\lmonda\Documents\GitHub\ppiCandidateTestApp\ppiCandidateTestApp\obj\Debug\net8.0\ppiCandidateTestApp.genruntimeconfig.cache
 C:\Users\lmonda\Documents\GitHub\ppiCandidateTestApp\ppiCandidateTestApp\obj\Debug\net8.0\ref\ppiCandidateTestApp.dll
 C:\Users\lmonda\Documents\GitHub\ppiCandidateTestApp\ppiCandidateTestApp\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\lmonda\Documents\GitHub\ppiCandidateTestApp\ppiCandidateTestApp\obj\Debug\net8.0\ppiCandidateTestApp.sourcelink.json

@@ -1,4 +1,5 @@
 ﻿@page "/candidates/details"
+@attribute [Authorize]
 @using Microsoft.EntityFrameworkCore
 @using ppiCandidateTestApp.Models
 @inject IDbContextFactory<ppiCandidateTestApp.Data.ppiCandidateTestAppContext> DbFactory

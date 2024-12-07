@@ -1,4 +1,5 @@
 ﻿@page "/candidates"
+@attribute [Authorize]
 @using Microsoft.EntityFrameworkCore
 @using Microsoft.AspNetCore.Components.QuickGrid
 @using ppiCandidateTestApp.Models
@@ -12,7 +13,7 @@
 
 <div>
     <form action="/candidates" data-enhance>
-        <p> Last Name</p> <input type="search" name="titleFilter"/>
+        <input type="search" name="titleFilter" placeholder="search by Last Name" />
         <input type="submit" value="Search" />
     </form>
 </div>
@@ -34,6 +35,10 @@
         <a href="@($"candidates/delete?id={candidate.Id}")">Delete</a>
     </TemplateColumn>
 </QuickGrid>
+
+<form action="Auth/CookieLogout" method="post">
+    <button type="submit" class="btn btn-primary">Logout</button>
+</form>
 
 @code {
     private ppiCandidateTestAppContext context = default!;

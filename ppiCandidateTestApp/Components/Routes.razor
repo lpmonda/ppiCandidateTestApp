@@ -1,6 +1,24 @@
-﻿<Router AppAssembly="@typeof(Program).Assembly">
+﻿@inject NavigationManager navigationManager
+
+<Router AppAssembly="@typeof(Program).Assembly">
     <Found Context="routeData">
-        <RouteView RouteData="@routeData" DefaultLayout="@typeof(Layout.MainLayout)" />
+        <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(Layout.MainLayout)">
+            <NotAuthorized>
+                @{
+                    navigationManager.NavigateTo("/login", true);
+                }
+            </NotAuthorized>
+        </AuthorizeRouteView>        
         <FocusOnNavigate RouteData="@routeData" Selector="h1" />
     </Found>
+    <NotFound>
+        @{
+            navigationManager.NavigateTo("/login", true);
+        }
+    </NotFound>
+
+   <!--  <Found Context="routeData">
+        <RouteView RouteData="@routeData" DefaultLayout="@typeof(Layout.MainLayout)" />
+        <FocusOnNavigate RouteData="@routeData" Selector="h1" />
+    </Found> -->
 </Router>
