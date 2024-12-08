@@ -13,13 +13,16 @@
 
 <div>
     <form action="/candidates" data-enhance>
-        <input type="search" name="titleFilter" placeholder="search by Last Name" />
+        <input type="search" name="FirstNameFilter" placeholder="search by First Name" />
+        <input type="search" name="titleFilter" placeholder="search by Last Name" />  
+        <input type="search" name="emailFilter" placeholder="search by emailid" />
         <input type="submit" value="Search" />
+        <button class="btn btn-primary" @onclick="ClearFilters">Clear Filter</button>
     </form>
 </div>
 
 <p>
-    <a href="candidates/create">Create New</a>
+    <br /> <a href="candidates/create">Create New</a>
 </p>
 
 <QuickGrid Class="table" Items="FilteredCandidate">
@@ -43,6 +46,13 @@
 @code {
     private ppiCandidateTestAppContext context = default!;
 
+    void ClearFilters()
+    {
+        TitleFilter = string.Empty;
+        FirstNameFilter = string.Empty;
+        emailFilter = string.Empty;
+    }
+
     IQueryable<Candidate>? itemsQueryable;
 
     [SupplyParameterFromQuery]
@@ -51,14 +61,19 @@
     [SupplyParameterFromQuery]
     private string? FirstNameFilter { get; set; }
 
+    [SupplyParameterFromQuery]
+    private string? emailFilter { get; set; }
+
 
     private IQueryable<Candidate> FilteredCandidate =>
-       (context.Candidate.Where(  m => m.Lastname!.Contains(TitleFilter ?? string.Empty ))  
-       );
+       (context.Candidate.Where(m => m.Lastname!.Contains(TitleFilter ?? string.Empty) && 
+                                m.Firstname!.Contains(FirstNameFilter ?? string.Empty) &&
+                                m.email!.Contains(emailFilter ?? string.Empty)
+       ));
 
-    private IQueryable<Candidate> FilteredCandidate2 =>
+   /* private IQueryable<Candidate> FilteredCandidate2 =>
       (context.Candidate.Where(m => m.Firstname!.Contains(FirstNameFilter ?? string.Empty))
-      );
+      );*/
 
   /*  private IQueryable<Candidate> FilteredCandidate
     {

@@ -72,6 +72,30 @@ namespace ppiCandidateTestApp.Data
                      zipcode = 77022,
                      email = "test7email@gmail.com",
                  },
+                 new Candidate
+                 {
+                     Firstname = "Jim",
+                     Lastname = "Jarvis",
+                     Phone = "675-757-7732",
+                     zipcode = 77022,
+                     email = "jimjarvis@gmail.com",
+                 },
+                 new Candidate
+                 {
+                     Firstname = "Mary",
+                     Lastname = "Moana",
+                     Phone = "777-777-7777",
+                     zipcode = 77078,
+                     email = "mmoana@gmail.com",
+                 },
+                 new Candidate
+                 {
+                     Firstname = "Matt",
+                     Lastname = "Romber",
+                     Phone = "734-567-7777",
+                     zipcode = 77653,
+                     email = "mrom@gmail.com",
+                 },
                 new Candidate
                 {
                     Firstname = "Mary",
