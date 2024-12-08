@@ -15,10 +15,17 @@ namespace ppiCandidateTestApp.Data
             if (context == null || context.Candidate == null)
             {
                 throw new NullReferenceException(
-                    "Null BlazorWebAppMoviesContext or Movie DbSet");
+                    "Null ppiCandidateTestAppContext or Candidate DbSet");
             }
 
-            if (context.Candidate.Any())
+            try
+            {
+                if (context.Candidate.Any())
+                {
+                    return;
+                }
+            }
+            catch (Exception ex)
             {
                 return;
             }
