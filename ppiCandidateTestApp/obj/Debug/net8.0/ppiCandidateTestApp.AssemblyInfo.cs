@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ppiCandidateTestApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+81745b91fba3f81ef333e4949a43f00d5145c532")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+52c36ac56a68d922bedc5d06c20873a5a55d93ba")]
 [assembly: System.Reflection.AssemblyProductAttribute("ppiCandidateTestApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ppiCandidateTestApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
